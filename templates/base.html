@@ -32,10 +32,10 @@
                         <a class="nav-link {{ 'active' if active_page == 'home' else '' }}" href="{{url_for('home')}}">Home</a>
                     </li>
                     <li class="nav-item"></li>
-                        <a class="nav-link {{ 'active' if active_page == 'vets' else '' }}" href="{{url_for('home')}}">Solve a problem!</a>
+                        <a class="nav-link {{ 'active' if active_page == 'solve' else '' }}" href="{{url_for('solve')}}">Solve a problem!</a>
                     </li>
                     <li class="nav-item"></li>
-                    <a class="nav-link {{ 'active' if active_page == 'newvet' else '' }}" href="{{url_for('home')}}">Login/Sign up</a>
+                    <a class="nav-link {{ 'active' if active_page == 'login' else '' }}" href="{{url_for('login')}}">Login/Sign up</a>
                 </li>
                 </ul>
             </div>

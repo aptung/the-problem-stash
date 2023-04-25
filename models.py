@@ -4,21 +4,22 @@ that will be used to create objects
 and connect to data tables.
 """
 
-from sqlalchemy import ForeignKey, Column, INTEGER, TEXT
+from sqlalchemy import *
 from sqlalchemy.orm import relationship
 from database import Base
+from sqlalchemy.sql import func
 
 # TODO: Complete your models
 class Problem(Base):
     __tablename__ = "problems"
 
     # Columns
-    id = Column("id", TEXT, primary_key=True)
+    id = Column("id", INTEGER, primary_key=True, autoincrement=True)
     title = Column("title", TEXT)
     content = Column("content", TEXT, nullable=False)
     answer = Column("answer", TEXT, nullable=False)
     subject = Column("subject", TEXT)
-    solved_by = relationship("User", secondary= "solves", back_populates="users")
+    solved_by = relationship("User", secondary= "solves", back_populates="problems_solved")
 
     def __init__(self, title, content, answer, subject):
         self.title = title
@@ -35,7 +36,7 @@ class User(Base):
     # Columns
     username = Column("username", TEXT, primary_key=True)
     password = Column("password", TEXT, nullable=False)
-    problems_solved = relationship("Problem", secondary="solves", back_populates="problems")
+    problems_solved = relationship("Problem", secondary="solves", back_populates="solved_by")
 
     def __init__(self, username, password):
         self.username = username
@@ -50,7 +51,11 @@ class Solve(Base):
     id = Column("id", INTEGER, primary_key=True, autoincrement=True)
     problem_id = Column("problem_id", ForeignKey("problems.id"))
     user_id = Column("user_id", ForeignKey("users.username"))
-    timestamp = Column("timestamp", TEXT, nullable=False)
+    
+    # credit to stack overflow user Jeff Widman
+    # https://stackoverflow.com/questions/13370317/sqlalchemy-default-datetime
+    time_created = Column(DateTime(timezone=True), server_default=func.now())
+
 
     def __init__(self, problem_id, user_id):
         self.problem_id = problem_id

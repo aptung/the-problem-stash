@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% set active_page = "login" %}
+
+{%block content %}
+    <!-- code modified from bootstrap website https://getbootstrap.com/docs/4.0/components/forms/ -->
+    <!-- https://getbootstrap.com/docs/4.0/components/card/ -->
+    <div class="card" style="width: 30rem">
+        <div class="card-body">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+{% endblock%}
