@@ -12,8 +12,15 @@
         {{problem.content}}
     </div>
     <form method="POST">
-        <label>Enter your answer here</label>
-        <input type="text" class="form-control" id="answer" name="answer"> <button type="submit" class="btn">Submit</button>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <input type="text" class="form-control" id="answer" name="answer" placeholder="Enter your answer"> 
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5">
+                <button type="submit" class="btn">Submit</button> 
+            </div>
+        </div>
+        
     </form>
     
     {% with messages = get_flashed_messages() %}

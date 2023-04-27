@@ -24,6 +24,15 @@ def home():
     # db_session.add(testproblem2)
     # db_session.commit()
 
+    # testproblem3=Problem("Test problem3", "sdssdfsdsd", "1", "algebra")
+    # testproblem4=Problem("Test problem4", "sdssdsdsdfsdffsdsd", "3", "number theory")
+    # testproblem5=Problem("Test problem5", "sdssdefeefeffeefeffsdsd", "7", "algebra")
+
+    # db_session.add(testproblem3)
+    # db_session.add(testproblem4)
+    # db_session.add(testproblem5)
+    # db_session.commit()
+
     logged_in = "username" in session
     return render_template("home.html", logged_in=logged_in)
 
