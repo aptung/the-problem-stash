@@ -25,17 +25,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- TODO: Fix the links -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"></li>
-                        <a class="nav-link {{ 'active' if active_page == 'home' else '' }}" href="{{url_for('home')}}">Home</a>
-                    </li>
+                    <a class="nav-link {{ 'active' if active_page == 'solve' else '' }} {{ 'd-none' if not logged_in else ''}}" href="{{url_for('solve')}}">Solve a problem!</a>
                     <li class="nav-item"></li>
-                        <a class="nav-link {{ 'active' if active_page == 'solve' else '' }}" href="{{url_for('solve')}}">Solve a problem!</a>
-                    </li>
+                    <a class="nav-link {{ 'active' if active_page == 'login' else '' }} {{ 'd-none' if logged_in else ''}}" href="{{url_for('login')}}">Login/Sign up</a>
                     <li class="nav-item"></li>
-                    <a class="nav-link {{ 'active' if active_page == 'login' else '' }}" href="{{url_for('login')}}">Login/Sign up</a>
+                    <a class="nav-link {{'d-none' if not logged_in else '' }}" href="{{url_for('logout')}}">Log out</a>
                 </li>
                 </ul>
             </div>

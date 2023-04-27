@@ -2,6 +2,17 @@
 
 {% set active_page = "home" %}
 
+{% block title %}
+    Home
+{% endblock %}
+
 {%block content %}
     <h1>Welcome to the problem stash!</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 {% endblock%}

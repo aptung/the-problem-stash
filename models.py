@@ -14,8 +14,7 @@ class Problem(Base):
     __tablename__ = "problems"
 
     # Columns
-    id = Column("id", INTEGER, primary_key=True, autoincrement=True)
-    title = Column("title", TEXT)
+    title = Column("title", TEXT, primary_key=True)
     content = Column("content", TEXT, nullable=False)
     answer = Column("answer", TEXT, nullable=False)
     subject = Column("subject", TEXT)
@@ -49,12 +48,12 @@ class Solve(Base):
     __tablename__ = "solves"
 
     id = Column("id", INTEGER, primary_key=True, autoincrement=True)
-    problem_id = Column("problem_id", ForeignKey("problems.id"))
+    problem_id = Column("problem_id", ForeignKey("problems.title"))
     user_id = Column("user_id", ForeignKey("users.username"))
-    
+
     # credit to stack overflow user Jeff Widman
     # https://stackoverflow.com/questions/13370317/sqlalchemy-default-datetime
-    time_created = Column(DateTime(timezone=True), server_default=func.now())
+    time_solved = Column(DateTime(timezone=True), server_default=func.now())
 
 
     def __init__(self, problem_id, user_id):
