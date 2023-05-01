@@ -10,6 +10,19 @@
     background-color:#86DEB7;
 }
 
-/* body{
-    background-color:black;
+.carousel-caption{
+    font-weight: bold;
+    color:white;
+    font-size:50pt;
+    top:35%;
+}
+
+img{
+    width:100%;
+}
+
+/* 
+.maintxt {
+    background-image: url(../images/background.jpeg);
+    background-size: cover;
 } */

@@ -33,8 +33,13 @@ def home():
     # db_session.add(testproblem5)
     # db_session.commit()
 
+    # testproblem6=Problem("Test problem6", "sdfwefijwgerwwee", "17", "algebra")
+    # db_session.add(testproblem6)
+    # db_session.commit()
+
+    problems = random.sample(list(db_session.query(Problem)), 6)
     logged_in = "username" in session
-    return render_template("home.html", logged_in=logged_in)
+    return render_template("home.html", problem1 = problems[0], problem2 = problems[1], problem3 = problems[2], problem4 = problems[3], problem5 = problems[4], problem6 = problems[5], logged_in=logged_in)
 
 @app.route("/login", methods=("GET", "POST"))
 def login():
@@ -52,6 +57,30 @@ def login():
             return render_template("login.html")
         session["username"] = username
         return redirect(url_for('home'))
+
+@app.route("/signup", methods=("GET", "POST"))
+def signup():
+    if request.method=="GET":
+        return render_template("signup.html")
+    if request.method=="POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        password2 = request.form["password2"]
+        user = db_session.query(User).where(User.username==username).first()
+        if user is not None:
+            flash("That username is already taken", "error")
+            return render_template("signup.html")
+        elif password != password2:
+            flash("Those passwords don't match", "error")
+            return render_template("signup.html")
+        else:
+            new_user=User(username, password)
+            db_session.add(new_user)
+            db_session.commit()
+            flash("Your account has been created and you have been logged in!", "info")
+        session["username"] = username
+        return redirect(url_for('home'))
+    
 
 @app.route("/logout")
 def logout():
@@ -85,13 +114,10 @@ def solve():
             current_user = db_session.query(User).where(User.username == session["username"]).first()
             current_user.problems_solved.append(current_problem)
             db_session.commit()
-            return redirect(url_for('solve'), logged_in=logged_in)
+            return redirect(url_for('solve'))
         else:
             flash("That's incorrect", "info")
             return render_template("solve.html", problem=current_problem, logged_in=logged_in)
-            
-    
-
 
 @app.before_first_request
 def setup():

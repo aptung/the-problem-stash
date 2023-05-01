@@ -1,0 +1,11 @@
+{% extends "loginsignup.html" %}
+
+{% set signup = True %}
+
+{% block header %}
+    Signup    
+{% endblock %}
+
+{% block footer %}
+    <a href="{{url_for('login')}}">Have an account? Log in here</a>    
+{% endblock %}

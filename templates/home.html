@@ -3,16 +3,80 @@
 {% set active_page = "home" %}
 
 {% block title %}
-    Home
+Home
 {% endblock %}
 
-{%block content %}
-    <h1>Welcome to the problem stash!</h1>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p>{{message}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+{%block largeimage %}
+    <!--https://www.rawpixel.com/image/3399730/free-illustration-vector-math-square-->
+
+    <div class="row">
+        <div class="col-md-12 col-centered">
+            <img
+                src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zNzNiYXRjaDEzLTA4Mi1rcHhrOW5nay5qcGc.jpg">
+            <p class="carousel-caption">Welcome to the problem stash!</p>
+        </div>
+    </div>
+
+    <!-- Figure out where to put this -->
+    <!-- {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %} -->
 {% endblock%}
+
+<!-- todo: make these buttons actually do something -->
+
+{% block content %}
+    <div class="card-deck {{ 'd-none' if logged_in else ''}}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{problem1.title}}</h5>
+                <p class="card-text">{{problem1.content}}</p>
+                <button type="submit" class="btn">Try it now!</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{problem2.title}}</h5>
+                <p class="card-text">{{problem2.content}}</p>
+                <button type="submit" class="btn">Try it now!</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{problem3.title}}</h5>
+                <p class="card-text">{{problem3.content}}</p>
+                <button type="submit" class="btn">Try it now!</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-deck {{ 'd-none' if logged_in else ''}}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{problem4.title}}</h5>
+                <p class="card-text">{{problem4.content}}</p>
+                <button type="submit" class="btn">Try it now!</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{problem5.title}}</h5>
+                <p class="card-text">{{problem5.content}}</p>
+                <button type="submit" class="btn">Try it now!</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{problem6.title}}</h5>
+                <p class="card-text">{{problem6.content}}</p>
+                <button type="submit" class="btn">Try it now!</button>
+            </div>
+        </div>
+    </div>
+    <div class="{{ 'd-none' if not logged_in else ''}}">
+        <button type="submit" class="btn">Try some problems!</button>
+    </div>
+{% endblock %}
