@@ -7,6 +7,13 @@
 {% endblock %}
 
 {%block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <h1>{{problem.title}} ({{problem.subject}})</h1>
     <div class="jumbotron">
         {{problem.content}}

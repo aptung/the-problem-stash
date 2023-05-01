@@ -36,7 +36,7 @@ def home():
     # testproblem6=Problem("Test problem6", "sdfwefijwgerwwee", "17", "algebra")
     # db_session.add(testproblem6)
     # db_session.commit()
-
+    
     problems = random.sample(list(db_session.query(Problem)), 6)
     logged_in = "username" in session
     return render_template("home.html", problem1 = problems[0], problem2 = problems[1], problem3 = problems[2], problem4 = problems[3], problem5 = problems[4], problem6 = problems[5], logged_in=logged_in)
@@ -56,7 +56,7 @@ def login():
             flash("Your password is incorrect", "error")
             return render_template("login.html")
         session["username"] = username
-        return redirect(url_for('home'))
+        return redirect(url_for('solve'))
 
 @app.route("/signup", methods=("GET", "POST"))
 def signup():
@@ -79,7 +79,7 @@ def signup():
             db_session.commit()
             flash("Your account has been created and you have been logged in!", "info")
         session["username"] = username
-        return redirect(url_for('home'))
+        return redirect(url_for('solve'))
     
 
 @app.route("/logout")
