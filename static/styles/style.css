@@ -17,6 +17,22 @@
     top:35%;
 }
 
+.card-deck{
+    margin-top:5px;
+}
+
+/* targets only the cards on the home screen, since those are the only ones within a card-deck */
+/* avoids putting space around the cards on the login/signup pages */
+.card-deck > .card{
+    margin:20px;
+    background-color:#ADEEE3;
+}
+
+.title{
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
 img{
     width:100%;
 }
