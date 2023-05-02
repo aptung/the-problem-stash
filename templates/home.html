@@ -10,24 +10,14 @@ Home
 <!--https://www.rawpixel.com/image/3399730/free-illustration-vector-math-square-->
 
 <div class="row">
-    <div class="col-xs-12 col-md-12 col-centered">
+    <div class="col-md-12 col-centered">
         <img
             src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zNzNiYXRjaDEzLTA4Mi1rcHhrOW5nay5qcGc.jpg">
         <p class="carousel-caption">Welcome to the problem stash!</p>
     </div>
 </div>
-
-<!-- Figure out where to put this -->
-<!-- {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{message}}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %} -->
 {% endblock%}
 
-<!-- todo: make these buttons actually do something -->
 
 {% block content %}
     <div class="container {{ 'd-none' if logged_in else ''}}">

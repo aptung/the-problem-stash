@@ -121,7 +121,7 @@ def recentlysolved():
     if "username" not in session:
         return redirect(url_for('login'))
     # .all() ensures that a list is returned instead of an iterator
-    problems_dates = db_session.query(Problem, Solve.time_solved).where(Problem.title==Solve.problem_id).join(Solve, Solve.user_id==session["username"]).group_by(Problem.title).order_by(Solve.time_solved).limit(10).all()
+    problems_dates = db_session.query(Problem, Solve.time_solved).where(Problem.title==Solve.problem_id).join(Solve, Solve.user_id==session["username"]).group_by(Problem.title).order_by(desc(Solve.time_solved)).limit(10).all()
     return render_template("recentlysolved.html", problems_dates = problems_dates, logged_in=True)
 
 @app.before_first_request
