@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% set active_page = "recent" %}
+
+{% block title %}
+Recently Solved
+{% endblock %}
+
+
+{% block content %}
+    <!-- credit to https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template 
+        for showing how to get the length of a list in jinja-->
+    {% if problems_dates|length == 0 %}
+        <h3 class="title">Nothing to see here! <a href="{{url_for('solve')}}">Solve some problems!</a></h1>
+    {% else %}
+        <h1 class="title">Here are your most recently solved problems!</h1>
+        <div class="card-columns">
+            {% for p in problems_dates %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{p[0].title}}</h5>
+                        <p class="card-text">{{p[0].content}}</p>
+                        <i>Solved {{p[1]}}</i>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+{% endblock %}

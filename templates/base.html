@@ -30,6 +30,8 @@
                     <li class="nav-item"></li>
                     <a class="nav-link {{ 'active' if active_page == 'solve' else '' }} {{ 'd-none' if not logged_in else ''}}" href="{{url_for('solve')}}">Solve a problem!</a>
                     <li class="nav-item"></li>
+                    <a class="nav-link {{ 'active' if active_page == 'recent' else '' }} {{ 'd-none' if not logged_in else ''}}" href="{{url_for('recentlysolved')}}">Recently Solved</a>
+                    <li class="nav-item"></li>
                     <a class="nav-link {{ 'active' if active_page == 'login' else '' }} {{ 'd-none' if logged_in else ''}}" href="{{url_for('login')}}">Login/Sign up</a>
                     <li class="nav-item"></li>
                     <a class="nav-link {{'d-none' if not logged_in else '' }}" href="{{url_for('logout')}}">Log out</a>

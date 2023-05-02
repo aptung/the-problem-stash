@@ -13,7 +13,7 @@
 .carousel-caption{
     font-weight: bold;
     color:white;
-    font-size:50pt;
+    font-size:8vw;
     top:35%;
 }
 
@@ -21,11 +21,20 @@
     margin-top:5px;
 }
 
+#home-button{
+    margin-top: 30px;
+}
+
 /* targets only the cards on the home screen, since those are the only ones within a card-deck */
-/* avoids putting space around the cards on the login/signup pages */
+/* avoids putting space/color around the cards on the login/signup pages */
 .card-deck > .card{
     margin:20px;
-    background-color:#ADEEE3;
+    background-color:#86DEB7;
+}
+
+.card-columns > .card{
+    margin:20px;
+    background-color:#86DEB7;
 }
 
 .title{

@@ -10,7 +10,7 @@ Home
 <!--https://www.rawpixel.com/image/3399730/free-illustration-vector-math-square-->
 
 <div class="row">
-    <div class="col-md-12 col-centered">
+    <div class="col-xs-12 col-md-12 col-centered">
         <img
             src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zNzNiYXRjaDEzLTA4Mi1rcHhrOW5nay5qcGc.jpg">
         <p class="carousel-caption">Welcome to the problem stash!</p>
@@ -76,7 +76,7 @@ Home
     </div>
     
     <div class="{{ 'd-none' if not logged_in else ''}}">
-        <a class="btn btn-block" href="{{url_for('solve')}}" role="button">Try some problems!</a>
+        <a class="btn btn-block" id="home-button" href="{{url_for('solve')}}" role="button">Try some problems!</a>
         <!-- <button type="submit" class="btn btn-block">Try some problems!</button> -->
     </div>
 
