@@ -97,8 +97,8 @@ def solve():
             if problem not in problems_solved:
                 problems_unsolved.append(problem)
         if len(problems_unsolved)==0:
-            flash("You solved all the problems! Congrats!", "info")
-            return redirect(url_for('home'))
+            # flash("You solved all the problems! Congrats!", "info")
+            return redirect(url_for('congrats'))
         rand_problem = random.choice(problems_unsolved)
         session["title"] = rand_problem.title
         return render_template("solve.html", problem=rand_problem, logged_in=True)
@@ -123,6 +123,10 @@ def recentlysolved():
     # .all() ensures that a list is returned instead of an iterator
     problems_dates = db_session.query(Problem, Solve.time_solved).where(Problem.title==Solve.problem_id).join(Solve, Solve.user_id==session["username"]).group_by(Problem.title).order_by(desc(Solve.time_solved)).limit(10).all()
     return render_template("recentlysolved.html", problems_dates = problems_dates, logged_in=True)
+
+@app.route("/congrats")
+def congrats():
+    return render_template("congrats.html", logged_in=True)
 
 @app.before_first_request
 def setup():
