@@ -32,6 +32,7 @@
     background-color:#86DEB7;
 }
 
+/* this targets the cards on the recently solved page */
 .card-columns > .card{
     margin:20px;
     background-color:#86DEB7;
